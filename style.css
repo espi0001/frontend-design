@@ -1,2 +1,8 @@
 /* Dine styles her */
-article {}
+article > * + * {
+  margin-inline: var(--flow-space, 0.5rlh);
+}
+
+h2 > * + * {
+  margin-inline: var(--flow-space, 2rlh);
+}
