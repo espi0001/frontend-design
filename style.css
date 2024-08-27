@@ -8,12 +8,24 @@
 
 /* 
 - Kort uden både et billede og en overskrift skal have en justeret font-størrelse og linjehøjde for paragraf tekst.
-- Kort uden billeder skal have en forøget font-størrelse for overskrifter.
-- Kort med billeder skal have nul padding, men deres indhold skal matche padding’en fra de øvrige kort. */
+ */
 
-.card:has(img):has(h1) {
-  font-size: 3rem;
+.card:not(:has(img)):not(:has(h3)) p {
+  font-size: 0.8rem;
   line-height: 1.5;
+}
+/* - Kort uden billeder skal have en forøget font-størrelse for overskrifter. */
+.card:not(:has(img)) h3 {
+  font-size: 2rem;
+}
+
+/* - Kort med billeder skal have nul padding, men deres indhold skal matche padding’en fra de øvrige kort. */
+.card:has(img) {
+  padding: 0;
+}
+
+.card:has(img) .content {
+  padding: 1rem;
 }
 
 @layer reset, cards;
