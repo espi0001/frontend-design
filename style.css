@@ -1,8 +1,23 @@
 /* Dine styles her */
-article > * + * {
-  margin-inline: var(--flow-space, 0.5rlh);
+article {
+  > * + * {
+    margin-block-start: var(--flow-space, 0.5rlh);
+
+    h2 {
+      --flow-space: 2rlh;
+    }
+
+    h3 {
+      --flow-space: 1rlh;
+
+      + * {
+        --flow-space: 0.25rlh;
+      }
+    }
+  }
 }
 
-h2 > * + * {
-  margin-inline: var(--flow-space, 2rlh);
-}
+/* 1. Angiv en standard vertikal margin på `.5rlh` mellem alle elementer inde i **`article`**, med mulighed for overskrive denne via en custom property kaldet `--flow-space`.
+2. For `h2`, sæt `—flow-space`-værdien til `2rlh`.
+3. For `h3`, sæt `—flow-space`-værdien til `1rlh`.
+4. For alle elementer, der kommer lige efter **`h3`**, reducér `—flow-space` til `.25rlh`. */
