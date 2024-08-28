@@ -1,10 +1,7 @@
 article {
   max-width: 65ch;
   margin-inline: auto;
-}
-article:has(img) {
   img {
-    margin: 0;
-    padding: 0;
+    max-width: none;
   }
 }
