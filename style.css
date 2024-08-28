@@ -1,9 +1,10 @@
 article {
   max-width: 65ch;
   margin-inline: auto;
-
+}
+article:has(img) {
   img {
-    margin: 0; /* Fjerner eventuelle marginer */
-    padding: 0; /* Fjerner eventuelle padding */
+    margin: 0;
+    padding: 0;
   }
 }
