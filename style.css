@@ -1,7 +1,6 @@
 article {
   max-width: 65ch;
   margin-inline: auto;
-  img {
-    max-width: none;
-  }
+
+  display: grid;
 }
