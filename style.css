@@ -1,4 +1,9 @@
 article {
-    max-width: 65ch;
-    margin-inline: auto;
+  max-width: 65ch;
+  margin-inline: auto;
+
+  img {
+    margin: 0; /* Fjerner eventuelle marginer */
+    padding: 0; /* Fjerner eventuelle padding */
+  }
 }
