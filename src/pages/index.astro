@@ -19,12 +19,7 @@ import { cardContent } from "../data/card-content.js";
       <section>
         <header>
           <h2>Financial Projections</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         </header>
 
         <ScrollingContainer cardContent={cardContent} />
@@ -34,9 +29,38 @@ import { cardContent } from "../data/card-content.js";
 </html>
 
 <style>
+  /* - `--content-width` – indholdets bredde
+- `--card-padding` – kortenes padding
+- `--card-gap` – afstanden mellem kortene
+- `--card-border-radius` – kortenes border-radius
+- `--card-background` – kortenes baggrundsfarve
+- `--card-text-color` – kortenes tekstfarve */
+  html {
+    scroll-snap-type: inline mandatory;
+  }
   main {
     padding-block: 4rem; /* Kun af æstetiske årsager */
+    display: flex;
+    justify-content: center;
+  }
+  header {
   }
   section {
+    margin: 0;
+    h2 {
+      font-weight: bold;
+    }
+  }
+
+  section {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+
+    display: grid;
+    place-content: center;
+
+    > * {
+      max-width: var(--content-width);
+    }
   }
 </style>
