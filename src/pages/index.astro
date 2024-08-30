@@ -40,27 +40,27 @@ import { cardContent } from "../data/card-content.js";
   }
   main {
     padding-block: 4rem; /* Kun af æstetiske årsager */
-    display: flex;
+    display: grid;
     justify-content: center;
   }
   header {
+    max-width: var(--content-width);
   }
   section {
     margin: 0;
-    h2 {
-      font-weight: bold;
-    }
-  }
-
-  section {
-    scroll-snap-align: center;
+    /* scroll-snap-align: center; */
     scroll-snap-stop: always;
-
-    display: grid;
+    display: flex;
+    flex-direction: column;
     place-content: center;
+    align-items: center;
+    gap: var(--content-gap);
 
     > * {
-      max-width: var(--content-width);
+      /* max-width: var(--content-width); */
+    }
+    h2 {
+      font-weight: bold;
     }
   }
 </style>
