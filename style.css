@@ -1,18 +1,113 @@
 article {
-  /* max-width: 65ch; */
-  margin-inline: auto;
+  --gap: clamp(1rem, 6vw, 3rem);
+  --full: minmax(var(--gap), 1fr);
+  --content: min(65ch, 100% - var(--gap) * 2);
+  --feature: minmax(0, 5rem);
 
   display: grid;
-  grid-template-columns: [full-start] 1fr 2rem [content] minmax(0, 65ch) 2rem 1fr [full-start];
+  grid-template-columns:
+    [full-start] var(--full)
+    [feature-start] var(--feature)
+    [content-start] var(--content) [content-end]
+    var(--feature) [feature-end]
+    var(--full) [full-end];
+
+  /* grid-template-columns: [full-start] minmax(clamp(1rem, 6vw, 3rem)) [feature-start] minmax(0, 5rem) [content-start] min(65ch, 100% - clamp(1rem, 6vw, 3rem) * 2) [content-end] minmax(0, 5rem) [feature-end] minmax(clamp(1rem, 6vw, 3rem)) [full-end]; */
 
   > * {
     grid-column: content;
   }
-  img {
-    grid-column: full-start;
+
+  .feature {
+    grid-column: feature;
+  }
+
+  .full {
+    grid-column: full;
+  }
+
+  > * + * {
+    margin-block-start: var(--flow-space, 1em);
+  }
+
+  .lead + * {
+    --flow-space: 2em;
+  }
+
+  :is(h1, h2, h3, blockquote) {
+    --flow-space: 1.5em;
   }
 
   blockquote {
-    grid-column: callout;
+    line-height: 1.4;
+    hyphens: auto;
+
+    p {
+      font-size: var(--size-step-2);
+      font-style: italic;
+      font-weight: 500;
+      display: flex;
+
+      &::before {
+        content: open-quote;
+        font-size: 2em;
+        margin-inline-end: 0.15em;
+        line-height: 0.9;
+        font-family: serif;
+        font-weight: 900;
+        align-self: baseline;
+        block-size: 1ex;
+      }
+    }
+
+    footer {
+      text-align: center;
+    }
+  }
+}
+
+@layer setup {
+  :root {
+    --size-step-0: clamp(1rem, calc(0.96rem + 0.22vw), 1.13rem);
+    --size-step-1: clamp(1.25rem, calc(1.16rem + 0.43vw), 1.5rem);
+    --size-step-2: clamp(1.56rem, calc(1.41rem + 0.76vw), 2rem);
+    --size-step-3: clamp(1.95rem, calc(1.71rem + 1.24vw), 2.66rem);
+    --size-step-4: clamp(2.44rem, calc(2.05rem + 1.93vw), 3.55rem);
+  }
+  * {
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    line-height: 1.5;
+    background: oklch(97% 0.005 220);
+  }
+
+  article {
+    line-height: 1.5;
+    font-family: system-ui;
+    margin-block: 3rem;
+  }
+
+  :is(h1, h2) {
+    line-height: 1.125;
+  }
+
+  h2 {
+    font-size: var(--size-step-3);
+  }
+
+  h3 {
+    font-size: var(--size-step-2);
+  }
+
+  p {
+    color: #334155;
+    font-size: var(--size-step-0);
+  }
+
+  .lead {
+    font-size: var(--size-step-1);
   }
 }
