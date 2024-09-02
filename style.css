@@ -22,29 +22,47 @@ section {
   }
 
   .content {
+    grid-column: 2 / -1;
+    /* grid-column: 2 / -1; betyder den starter fra kolonne 2 og ender ved sidste kolonne */
+    grid-row: 1;
+
     > * + * {
       margin-top: 0.75rlh;
     }
   }
-  .content {
-    grid-row: 1 / 2;
-    grid-column: 2 / 4;
-  }
 
   figure {
     display: grid;
+    /* for at skrive det hurtigt skriv dg */
+
+    grid: subgrid / subgrid;
+    /* 
+    Man kan også skrive det sådan her:
+    grid-template: subgrid / subgrid;
+  
+    eller:
     grid-template-columns: subgrid;
     grid-template-rows: subgrid;
+    */
+
     grid-column: 1 / 3;
-    grid-row: 1 / 3;
+    grid-row: 1;
+
+    grid-row: 1 / span 2;
+
+    /* Man kan også skrive det sådan her:
+    grid-area: 1 / 1 / span 2 / 3; */
   }
 
   img {
     align-self: stretch;
     object-fit: cover;
     aspect-ratio: 1.35;
-    grid-column: 1 / 2;
-    grid-row: 1 / 3;
+
+    grid-area: 1 / auto / span 2;
+
+    /* grid-column: 1 / 2;
+    grid-row: 1 / 3; */
   }
 
   figcaption {
@@ -54,11 +72,18 @@ section {
     background: var(--gray-100);
     padding: 0.4rlh 0.6rlh;
 
-    grid-row: 2 / 3;
-    grid-column: 2 / 3;
+    grid-area: 2 / 2;
+    /*  starter på række 2 og kolonne 2 */
   }
 
-  @media (width > 600px) {
-    grid-template-columns: 1fr minmax(0, 300px);
+  @media (width < 600px) {
+    grid: revert;
+    /* revert betyder man nulstiller værdien man havde sat på grid */
+
+    .content,
+    figure {
+      display: revert;
+      grid-area: revert;
+    }
   }
 }
