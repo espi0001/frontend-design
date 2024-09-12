@@ -12,7 +12,7 @@
       }
     },
     {
-      "icon": "income-statement",
+      "icon": "income",
       "title": "Income Statement",
       "description": "The Income (Profit and Loss) Statement, commonly referred to as the P&L statement, summarizes the revenue and expenses for a specific time period (one month, one quarter, one year, etc.).",
       "link": {
@@ -21,7 +21,7 @@
       }
     },
     {
-      "icon": "financial-plan",
+      "icon": "financial",
       "title": "Financial Plan",
       "description": "Keep your information current and review the documents on a regular basis (monthly or more often if needed). Review them with key individuals within your company.",
       "link": {
@@ -30,7 +30,7 @@
       }
     },
     {
-      "icon": "financial-ratios",
+      "icon": "ratios",
       "title": "Financial Ratios",
       "description": "Ratios are useful when comparing your company with the competition on financial performance and also when benchmarking the performance of your company.",
       "link": {
